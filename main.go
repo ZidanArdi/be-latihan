@@ -6,7 +6,7 @@ import (
 	"be_latihan/config"
 	"be_latihan/model"
 	"be_latihan/router"
-	_ "be_latihan/docs"
+	"be_latihan/docs"
 
 	"github.com/gofiber/fiber/v2"
 	//"gorm.io/gorm/logger"
@@ -16,7 +16,7 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	//"github.com/gofiber/swagger"
 	"os"
-	"be_latihan/docs"
+	//"be_latihan/docs"
 	//"be_latihan/routes"
 )
 

@@ -4,9 +4,9 @@ import (
 	"log"
 
 	"be_latihan/config"
+	"be_latihan/docs"
 	"be_latihan/model"
 	"be_latihan/router"
-	"be_latihan/docs"
 
 	"github.com/gofiber/fiber/v2"
 	//"gorm.io/gorm/logger"
@@ -14,12 +14,12 @@ import (
 
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
+
 	//"github.com/gofiber/swagger"
 	"os"
 	//"be_latihan/docs"
 	//"be_latihan/routes"
 )
-
 
 // @title API Praktikum 13 - be_latihan
 // @version 1.0
@@ -38,8 +38,8 @@ func main() {
 
 	//Swagger Host Configuration
 	swaggerHost := os.Getenv("SWAGGER_HOST")
-	if swaggerHost != "" {
-		swaggerHost = "127.0.0.1/3000"
+	if swaggerHost == "" {
+		swaggerHost = "127.0.0.1:3000"
 	}
 	docs.SwaggerInfo.Host = swaggerHost
 

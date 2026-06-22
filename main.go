@@ -14,6 +14,9 @@ import (
 
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
+	//"github.com/gofiber/swagger"
+	"os"
+	"be_latihan/docs"
 	//"be_latihan/routes"
 )
 
@@ -29,11 +32,18 @@ import (
 // @securityDefinitions.apikey BearerAuth
 // @in header
 // @name Authorization
-
-
 func main() {
 	app := fiber.New()
 	app.Use(logger.New())
+
+	//Swagger Host Configuration
+	swaggerHost := os.Getenv("SWAGGER_HOST")
+	if swaggerHost != "" {
+		swaggerHost = "127.0.0.1/3000"
+	}
+	docs.SwaggerInfo.Host = swaggerHost
+
+
 	app.Use(cors.New(cors.Config{
     AllowOrigins: strings.Join(config.GetAllowedOrigins(), ","),
     AllowMethods: "GET,POST,PUT,DELETE,OPTIONS",
